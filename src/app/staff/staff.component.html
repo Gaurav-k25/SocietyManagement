@@ -1,0 +1,79 @@
+<div class="col-sm-12">
+  <div class="card">
+    <div class="card-header">
+      <strong>Staff</strong>
+      <small>Form</small>
+    </div>
+<div class="container-fluid">
+      <form #myForm="ngForm" (ngSubmit)="save(myForm)">
+    <div class="row">
+    <div class="form-group col-md-4">
+        <label for="inputName">Name</label>
+        <input id="inputName" type="name" class="form-control"  placeholder="Name" [(ngModel)]="name" name="name">
+      </div>
+      <input type="hidden" name="id" [(ngModel)]="id">
+  <div class="form-group col-md-4">
+    <label for="inputEmail4">Email</label>
+    <input id="inputEmail4" type="email" class="form-control" placeholder="Email" [(ngModel)]="email" name="email" >
+  </div>
+  <div class="form-group col-md-4">
+          <label for="inputDate" class="col-form-label" >Date Input</label>
+            <input id="inputDate" class="form-control"  type="date"  placeholder="date" [(ngModel)]="date" name="date">
+        </div>
+</div>
+<div class="form-group col-md-12">
+      <label for="inputAddress">Address</label>
+      <input id="inputAddress"  type="text" class="form-control" placeholder="1234 Main St" [(ngModel)]="address" name="address">
+    </div>
+    <div class="row">
+  <div class="form-group col-md-4">
+    <label for="inputCity">City</label>
+    <input id="inputCity" type="text" class="form-control" [(ngModel)]="city" name="city">
+ </div>
+  <div class="form-group col-md-4">
+    <label for="inputState">State</label>
+    <select id="inputState" class="form-control" [(ngModel)]="state" name="state">
+      <option selected>Choose...</option>
+      <option></option>
+      <option>Panjab</option>
+      <option>Mahrastra</option>
+    </select>
+  </div>
+  <div class="form-group col-md-4">
+    <label for="inputZip">Contact</label>
+    <input id="inputZip" type="text" class="form-control" placeholder="Contact Number" [(ngModel)]="contact" name="contact" maxlength="10">
+  </div>
+</div>
+<button type="submit" class="btn btn-block btn-success">Save</button>
+</form>
+</div>
+</div>
+<div class="container-fluid">
+<table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">SrNo.</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Date</th>
+          <th scope="col">Address</th>
+          <th scope="col">City</th>
+          <th scope="col">State</th>
+          <th scope="col">Contact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of staff; let i = index">
+          <td scope="row">{{i+1}}</td> 
+          <td>{{s.name}}</td>
+          <td>{{s.email}}</td>
+          <td>{{s.date}}</td>
+          <td>{{s.address}}</td>
+          <td>{{s.city}}</td>
+          <td>{{s.state}}</td>
+          <td>{{s.contact}}</td>
+          <td><button (click)="delete(s.id)">Delete</button><button (click)="edit(s)">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
